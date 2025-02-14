@@ -58,8 +58,8 @@ var upCmd = &cobra.Command{
 
 					outWithoutBloat := outSplitted[len(outSplitted)-1]
 					outWithoutBloat = strings.Split(outWithoutBloat, "--port")[1]
+					outWithoutBloat = strings.Trim(outWithoutBloat, "\x00")
 
-					fmt.Print(outWithoutBloat)
 					freePort, _ = strconv.Atoi(outWithoutBloat)
 				}
 			}
