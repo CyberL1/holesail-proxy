@@ -32,7 +32,7 @@ jobs:
         run: |
           export GOOS=${{ matrix.os }}
           export GOARCH=${{ matrix.arch }}
-          go build
+          go build -ldflags "-X holesail-proxy/utils.Version=1"
       - name: Pack binary
         run: zip holesail-proxy-${{ matrix.os }}-${{ matrix.arch }}.zip holesail-proxy${{ matrix.os == 'windows' && '.exe' || '' }}
       - name: Create release
