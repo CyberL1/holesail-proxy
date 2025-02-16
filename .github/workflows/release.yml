@@ -28,11 +28,13 @@ jobs:
         uses: actions/setup-go@v4
         with:
           go-version: '1.23'
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
       - name: Build binary
         run: |
           export GOOS=${{ matrix.os }}
           export GOARCH=${{ matrix.arch }}
-          go build
+          go build -ldflags "-X holesail-proxy/utils.Version=${{ env.RELEASE_VERSION }}"
       - name: Pack binary
         run: zip holesail-proxy-${{ matrix.os }}-${{ matrix.arch }}.zip holesail-proxy${{ matrix.os == 'windows' && '.exe' || '' }}
       - name: Create release
