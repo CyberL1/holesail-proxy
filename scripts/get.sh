@@ -35,7 +35,7 @@ rm $zip
 
 echo "Holesail proxy was installed to $exe"
 if command -v holesail-proxy > /dev/null; then
-  echo "Run 'holesail-proxy --help' to get started"
+  echo "Run 'holesail-proxy up' to get started"
 else
   case $SHELL in
   /bin/zsh) shell_profile=".zshrc" ;;
