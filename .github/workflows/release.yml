@@ -32,9 +32,9 @@ jobs:
         run: |
           export GOOS=${{ matrix.os }}
           export GOARCH=${{ matrix.arch }}
-          go build -ldflags "-X runtimer/constants.Version=${{ needs.create-tag.outputs.new_tag }}"
+          go build
       - name: Pack binary
-        run: zip runtimer-${{ matrix.os }}-${{ matrix.arch }}.zip runtimer${{ matrix.os == 'windows' && '.exe' || '' }}
+        run: zip holesail-proxy-${{ matrix.os }}-${{ matrix.arch }}.zip runtimer${{ matrix.os == 'windows' && '.exe' || '' }}
       - name: Create release
         uses: ncipollo/release-action@v1.15.0
         with:
