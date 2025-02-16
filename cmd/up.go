@@ -84,7 +84,10 @@ var upCmd = &cobra.Command{
 			httputil.NewSingleHostReverseProxy(appUrl).ServeHTTP(w, r)
 		})
 
-		http.ListenAndServe(":80", nil)
+		err := http.ListenAndServe(":80", nil)
+		if err != nil {
+			fmt.Println(err)
+		}
 	},
 }
 
