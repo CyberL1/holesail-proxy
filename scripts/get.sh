@@ -33,7 +33,7 @@ unzip -d $dir -o $zip
 chmod +x $exe
 rm $zip
 
-echo "Holesail proxy was installed to $runtimer_exe"
+echo "Holesail proxy was installed to $exe"
 if command -v holesail-proxy > /dev/null; then
   echo "Run 'holesail-proxy --help' to get started"
 else
