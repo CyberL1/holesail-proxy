@@ -24,6 +24,11 @@ var upCmd = &cobra.Command{
 	Short: "Start holesail proxy",
 	Args:  cobra.NoArgs,
 	Run: func(cmd *cobra.Command, args []string) {
+		if _, err := exec.LookPath("holesail"); err != nil {
+			fmt.Println("holesail command not found")
+			os.Exit(1)
+		}
+
 		cmd.Println("Starting proxy")
 
 		http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
